@@ -1,0 +1,115 @@
+.skills-container {
+    padding: 5% 10%;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+
+    svg {
+        color: white;
+    }
+}
+  
+.skills-container .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 50px;
+}
+  
+.skills-container .skills-grid .skill {
+    align-items: center;
+    text-align: left;
+}
+  
+.chip {
+    color: rgb(39, 40, 34) !important;
+    background-color: white !important;
+    font-size: 0.8rem !important;
+    height: 25px !important;
+
+    span {
+        font-family: 'Courier Prime', monospace;
+        color: rgb(39, 40, 34);
+    }
+
+    svg {
+        height: 15px !important;
+    }
+}
+
+.flex-chips {
+    line-height: 2;
+    margin: 0.5;
+
+    .chip-title {
+        color: white;
+        padding-right: 10px;
+    }
+}
+
+.flex-chips .MuiChip-root {
+    margin-right: 0.5em;
+}
+
+.flex-chips .MuiChip-outlined {
+    background-color: #e0e0e0;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.flex-chips .MuiChip-outlined span {
+    color: rgb(39, 40, 34);
+}
+
+/* ✅ New scrollable row for languages */
+.flex-chips.languages-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    gap: 10px;
+    padding-bottom: 1rem;
+    scroll-behavior: smooth;
+
+    &::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #999;
+        border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .MuiChip-root {
+        flex-shrink: 0;
+    }
+}
+
+/* Responsive adjustments */
+@media screen {
+    @media (max-width: 768px) {
+        .skills-container {
+            display: block;
+            padding-left: 5%;
+            padding-right: 5%;
+        }
+
+        .skills-container .skills-grid {
+            display: initial;
+        }
+        
+        .skills-container .skills-grid .skill {
+            padding-bottom: 5%;
+        }
+    }
+
+    @media (max-width: 567px) {
+        .skills {
+            font-size: 12px;
+        }
+    }
+}
