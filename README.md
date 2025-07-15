@@ -14,7 +14,6 @@
 
 This is my personalized developer portfolio website to showcase my past projects, technical skills, career experience, and contact information.
 
-🔗 View the [Live Demo](https://anurag078.github.io/Portfolio)
 
 > Originally based on an open-source template. Customized and maintained by me.
 
