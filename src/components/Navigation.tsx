@@ -20,7 +20,7 @@ const drawerWidth = 240;
 
 // 👇 Added "Resume" as a link (no scroll needed)
 const navItems = [
-  ['Resume', 'https://drive.google.com/file/d/1MYfbY4rAnrjdF1uxVRNxhNTLf-5pq2DR/view?usp=drive_link'],
+  ['Resume', 'https://drive.google.com/file/d/16pFtlU2zayW9mvvL8a_gcvhp1ZLIOkpx/view?usp=drive_link'],
   ['Expertise', 'expertise'],
   ['Experience', 'experience'],
   ['Projects', 'projects'],
