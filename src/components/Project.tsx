@@ -7,7 +7,7 @@ function Project() {
         <h1>Personal Projects</h1>
         <div className="projects-grid">
             <div className="project">
-    <a href="https://admybrand-landing.vercel.app" target="_blank" rel="noreferrer">
+    <a href="https://admybrand-landing.vercel.app/" target="_blank" rel="noreferrer">
         <h2>ADmyBRAND – AI-Powered SaaS Landing Page 🚀</h2>
     </a>
     <p>
