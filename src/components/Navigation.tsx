@@ -15,10 +15,10 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
+import Typography from "@mui/material/Typography";
 
 const drawerWidth = 240;
 
-// 👇 Added "Resume" as a link (no scroll needed)
 const navItems = [
   ['Resume', 'https://drive.google.com/file/d/16pFtlU2zayW9mvvL8a_gcvhp1ZLIOkpx/view?usp=drive_link'],
   ['Expertise', 'expertise'],
@@ -29,26 +29,20 @@ const navItems = [
 
 function Navigation({ parentToChild, modeChange }: any) {
   const { mode } = parentToChild;
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  const [mobileOpen, setMobileOpen] = useState<boolean>(false);
-  const [scrolled, setScrolled] = useState<boolean>(false);
-
-  const handleDrawerToggle = () => {
-    setMobileOpen((prevState) => !prevState);
-  };
+  const handleDrawerToggle = () => setMobileOpen((prev) => !prev);
 
   useEffect(() => {
     const handleScroll = () => {
       const navbar = document.getElementById("navigation");
       if (navbar) {
-        const scrolled = window.scrollY > navbar.clientHeight;
-        setScrolled(scrolled);
+        setScrolled(window.scrollY > navbar.clientHeight);
       }
     };
     window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const scrollToSection = (section: string) => {
@@ -56,23 +50,25 @@ function Navigation({ parentToChild, modeChange }: any) {
     if (sectionElement) {
       sectionElement.scrollIntoView({ behavior: 'smooth' });
     } else {
-      // fallback for external links like resume
       window.open(section, '_blank');
     }
   };
 
   const drawer = (
     <Box className="navigation-bar-responsive" onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <p className="mobile-menu-top"><ListIcon />Menu</p>
+      <p className="mobile-menu-top"><ListIcon /> Menu</p>
       <Divider />
       <List>
-        {navItems.map((item) => (
-          <ListItem key={item[0]} disablePadding>
+        {navItems.map(([label, link]) => (
+          <ListItem key={label} disablePadding>
             <ListItemButton
-              sx={{ textAlign: 'center' }}
-              onClick={() => scrollToSection(item[1])}
+              sx={{
+                textAlign: 'center',
+                '&:hover': { backgroundColor: 'rgba(255,255,255,0.1)' }
+              }}
+              onClick={() => scrollToSection(link)}
             >
-              <ListItemText primary={item[0]} />
+              <ListItemText primary={label} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -83,56 +79,97 @@ function Navigation({ parentToChild, modeChange }: any) {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar component="nav" id="navigation" className={`navbar-fixed-top${scrolled ? ' scrolled' : ''}`}>
-        <Toolbar className='navigation-bar'>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: 'none' } }}
+      <AppBar
+        id="navigation"
+        position="fixed"
+        sx={{
+          transition: "all 0.3s ease",
+          background: mode === 'dark'
+            ? "linear-gradient(90deg, #141E30, #243B55)"
+            : "linear-gradient(90deg, #4facfe, #00f2fe)",
+          backdropFilter: "blur(10px)",
+          boxShadow: scrolled ? "0 4px 20px rgba(0,0,0,0.3)" : "none",
+        }}
+      >
+        <Toolbar sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          
+          {/* Left: Logo/Brand */}
+          <Typography
+            variant="h6"
+            sx={{
+              fontWeight: 700,
+              letterSpacing: "1px",
+              cursor: "pointer",
+              background: "linear-gradient(45deg, #fff, #ddd)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              transition: "transform 0.3s ease",
+              '&:hover': { transform: "scale(1.05)" }
+            }}
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
-            <MenuIcon />
-          </IconButton>
+            MyPortfolio
+          </Typography>
 
-          {/* Toggle dark/light mode */}
-          {mode === 'dark' ? (
-            <LightModeIcon onClick={() => modeChange()} />
-          ) : (
-            <DarkModeIcon onClick={() => modeChange()} />
-          )}
-
-          {/* Main Navigation Buttons */}
-          <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+          {/* Desktop Navigation */}
+          <Box sx={{ display: { xs: 'none', sm: 'flex' }, gap: 2 }}>
             {navItems.map(([label, link]) => (
               <Button
                 key={label}
                 onClick={() => scrollToSection(link)}
-                sx={{ color: '#fff' }}
+                sx={{
+                  color: '#fff',
+                  fontWeight: 500,
+                  transition: "all 0.3s ease",
+                  '&:hover': {
+                    background: "rgba(255,255,255,0.15)",
+                    transform: "scale(1.05)"
+                  }
+                }}
               >
                 {label}
               </Button>
             ))}
           </Box>
+
+          {/* Right: Dark/Light Mode Toggle + Mobile Menu */}
+          <Box sx={{ display: "flex", alignItems: "center" }}>
+            <IconButton onClick={() => modeChange()} sx={{ color: "#fff" }}>
+              {mode === 'dark' ? <LightModeIcon /> : <DarkModeIcon />}
+            </IconButton>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="end"
+              onClick={handleDrawerToggle}
+              sx={{ display: { sm: 'none' } }}
+            >
+              <MenuIcon />
+            </IconButton>
+          </Box>
         </Toolbar>
       </AppBar>
 
-      <nav>
-        <Drawer
-          variant="temporary"
-          open={mobileOpen}
-          onClose={handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true,
-          }}
-          sx={{
-            display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
-          }}
-        >
-          {drawer}
-        </Drawer>
-      </nav>
+      {/* Mobile Drawer */}
+      <Drawer
+        variant="temporary"
+        open={mobileOpen}
+        onClose={handleDrawerToggle}
+        ModalProps={{ keepMounted: true }}
+        sx={{
+          display: { xs: 'block', sm: 'none' },
+          '& .MuiDrawer-paper': {
+            boxSizing: 'border-box',
+            width: drawerWidth,
+            background: mode === 'dark'
+              ? "linear-gradient(180deg, #141E30, #243B55)"
+              : "linear-gradient(180deg, #4facfe, #00f2fe)",
+            color: "#fff"
+          }
+        }}
+      >
+        {drawer}
+      </Drawer>
     </Box>
   );
 }
