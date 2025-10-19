@@ -1,43 +1,16 @@
 import React from "react";
-import Chip from "@mui/material/Chip";
-import "../assets/styles/Expertise.scss";
+import Chip from '@mui/material/Chip';
+import '../assets/styles/Expertise.scss';
 
 const languages = [
-  "Python",
-  "Java",
-  "C",
-  "PHP",
-  "JavaScript",
-  "HTML/CSS",
-  "SQL"
+  "Python", "Java", "C","PHP", "JavaScript", "HTML/CSS", "SQL"
 ];
-
 const frameworks = [
-  "React.js",
-  "Angular",
-  "Node.js",
-  "Hibernate",
-  "Bootstrap",
-  "AJAX"
+"React.js", "Angular", "Node.js", "Hibernate", "Bootstrap", "AJAX"
+  ];
+const devTools = [ "VS Code", "Eclipse", "Android Studio", "Google Cloud Platform", "Power BI", "XAMPP", "Git" 
 ];
-
-const devTools = [
-  "VS Code",
-  "Eclipse",
-  "Android Studio",
-  "Google Cloud Platform",
-  "Power BI",
-  "XAMPP",
-  "Git"
-];
-
-const technologies = [
-  "Linux",
-  "MySQL",
-  "PrestaShop",
-  "GitHub",
-  "Advanced Excel",
-  "RESTful APIs"
+const technologies = [ "Linux", "MySQL", "PrestaShop", "GitHub", "Advanced Excel", "RESTful APIs" 
 ];
 
 function Expertise() {
@@ -48,36 +21,29 @@ function Expertise() {
         <div className="skills-grid">
           <div className="skill">
             <h3>Skills Summary</h3>
-            <p>
-              A categorized overview of my technical skills, frameworks, tools, and platforms that I
-              frequently use in development and deployment.
-            </p>
+            <p>A categorized overview of my technical skills and tools I use regularly.</p>
 
-            <h4 className="section-heading">Languages:</h4>
-            <div className="flex-chips">
+      
+            <h4 className="section-heading">Language:</h4>
+            <div className="flex-chips languages-row">
               {languages.map((label, index) => (
-                <Chip key={index} className="chip" label={label} />
+                <Chip key={index} className='chip' label={label} />
               ))}
             </div>
 
-            <h4 className="section-heading">Frameworks / Libraries:</h4>
-            <div className="flex-chips">
-              {frameworks.map((label, index) => (
-                <Chip key={index} className="chip" label={label} />
-              ))}
-            </div>
-
+       
             <h4 className="section-heading">Developer Tools:</h4>
             <div className="flex-chips">
               {devTools.map((label, index) => (
-                <Chip key={index} className="chip" label={label} />
+                <Chip key={index} className='chip' label={label} />
               ))}
             </div>
 
-            <h4 className="section-heading">Technologies / Platforms:</h4>
+         
+            <h4 className="section-heading">Technologies / Frameworks:</h4>
             <div className="flex-chips">
-              {technologies.map((label, index) => (
-                <Chip key={index} className="chip" label={label} />
+              {techFrameworks.map((label, index) => (
+                <Chip key={index} className='chip' label={label} />
               ))}
             </div>
           </div>
