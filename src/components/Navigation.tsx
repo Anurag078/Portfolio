@@ -20,7 +20,8 @@ import Typography from "@mui/material/Typography";
 const drawerWidth = 240;
 
 const navItems = [
-  ['Resume', 'https://drive.google.com/file/d/16pFtlU2zayW9mvvL8a_gcvhp1ZLIOkpx/view?usp=drive_link'],
+  ['Resume', 'https://drive.google.com/file/d/1kDz2QzVCRbEcUkkspDcplXCpQK3B_fLn/view?usp=drive_link'],
+  
   ['Expertise', 'expertise'],
   ['Experience', 'experience'],
   ['Projects', 'projects'],
