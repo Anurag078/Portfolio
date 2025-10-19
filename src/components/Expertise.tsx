@@ -39,7 +39,6 @@ function Expertise() {
               ))}
             </div>
 
-         
             <h4 className="section-heading">Technologies / Frameworks:</h4>
             <div className="flex-chips">
               {techFrameworks.map((label, index) => (
