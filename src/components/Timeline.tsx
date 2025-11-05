@@ -17,11 +17,11 @@ function Timeline() {
             className="vertical-timeline-element--work"
             contentStyle={{ background: 'white', color: 'rgb(39, 40, 34)' }}
             contentArrowStyle={{ borderRight: '7px solid  white' }}
-            date="May 2025 - Present"
+            date="May 2025 - Novemer 2025"
             iconStyle={{ background: '#5000ca', color: 'rgb(39, 40, 34)' }}
             icon={<FontAwesomeIcon icon={faBriefcase} />}
           >
-            <h3 className="vertical-timeline-element-title">Web Developer Intern</h3>
+            <h3 className="vertical-timeline-element-title">Web Developer </h3>
             <h4 className="vertical-timeline-element-subtitle">TractionShastra Pvt. Ltd. — Mumbai, Maharashtra</h4>
             <ul>
               <li>Developed and deployed multiple dynamic web applications using PHP, JavaScript, Bootstrap, and AJAX focusing on responsive design and performance.</li>
