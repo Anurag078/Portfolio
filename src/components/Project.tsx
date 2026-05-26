@@ -1,7 +1,7 @@
 import React from "react";
 import "../assets/styles/Project.scss";
 
-function Project() {
+const Project = () => {
   return (
     <div className="projects-container" id="projects">
       <h1>Personal Projects</h1>
@@ -81,6 +81,6 @@ function Project() {
       </div>
     </div>
   );
-}
+};
 
 export default Project;
