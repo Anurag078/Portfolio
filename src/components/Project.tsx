@@ -7,7 +7,26 @@ function Project() {
         <h1>Personal Projects</h1>
         <div className="projects-grid">
              <div className="project">
-                <h2>Digital Heroes</h2>
+                import React from "react";
+import '../assets/styles/Project.scss';
+
+function Project() {
+    return(
+    <div className="projects-container" id="projects">
+        <h1>Personal Projects</h1>
+
+        <div className="projects-grid">
+
+            <div className="project">
+                <h2>
+                    <a 
+                        href="https://digital-heros-app.vercel.app/"
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                    >
+                        Digital Heroes
+                    </a>
+                </h2>
                 <p>
                     Digital Heroes turns your golf performance into real-world change. Support local missions, enter the draw, and help save lives through every game.
                 </p>
