@@ -17,20 +17,7 @@ function Project() {
 
         <div className="projects-grid">
 
-            <div className="project">
-                <h2>
-                    <a 
-                        href="https://digital-heros-app.vercel.app/"
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                    >
-                        Digital Heroes
-                    </a>
-                </h2>
-                <p>
-                    Digital Heroes turns your golf performance into real-world change. Support local missions, enter the draw, and help save lives through every game.
-                </p>
-            </div>
+
             <div className="project">
                 <h2>ADmyBRAND – AI-Powered SaaS Landing Page 🚀</h2>
                 <p>
