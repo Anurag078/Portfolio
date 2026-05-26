@@ -6,6 +6,12 @@ function Project() {
     <div className="projects-container" id="projects">
         <h1>Personal Projects</h1>
         <div className="projects-grid">
+             <div className="project">
+                <h2>Digital Heroes</h2>
+                <p>
+                    Digital Heroes turns your golf performance into real-world change. Support local missions, enter the draw, and help save lives through every game.
+                </p>
+            </div>
             <div className="project">
                 <h2>ADmyBRAND – AI-Powered SaaS Landing Page 🚀</h2>
                 <p>
